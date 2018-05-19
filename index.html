@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>肥宅记录仪</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="app.min.css">
+    <style>
+      /* TODO */
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="app-page" data-page="home">
+      <div class="app-topbar">
+        <div class="app-title">肥宅记录仪</div>
+      </div>
+      <div class="app-content">
+        <div class="app-section">
+          <div class="app-button" data-target="drinkpage">肥宅快乐水</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page" data-page="drinkpage">
+      <div class="app-topbar">
+        <div class="app-button left" data-back data-autotitle></div>
+        <div class="app-title">哎呀喝穷了呢</div>
+      </div>
+      <div class="app-content">
+           <div class="app-section"> 
+	         <div class= "app-button" data-target="addRecordPage">来来来喝完这杯再说吧</div>
+		 <div class= "app-button">哎呀哎呀喝了这么多了呢</div>
+           </div>
+      </div>
+    </div>
+
+<div class="app-page" data-page="addRecordPage">                   <div class= "app-topbar">
+         <div class="app-title">说吧 喝了啥</div>
+    </div>	
+
+    <div class="app-content">
+         <ul class="app-list">
+             <li class="app-button">白水</li>
+             <li class="app-button">咖啡</li>
+             <li class="app-button">类茶</li>
+             <li class="app-button">奶类</li>
+             <li class="app-button">软饮料</li>	     
+    </div>
+</div>    
+
+    <script src="zepto.js"></script>
+    <script src="app.min.js"></script>
+    <script>
+      App.controller('home', function (page) {
+        // put stuff here
+      });
+
+      App.controller('drinkpage', function (page) {
+        // put stuff here
+      });
+
+      try {
+        App.restore();
+      } catch (err) {
+        App.load('home');
+      }
+    </script>
+</body>
+</html>
+
