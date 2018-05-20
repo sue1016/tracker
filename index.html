@@ -2,15 +2,29 @@
 <html>
   <head>
     <title>肥宅记录仪</title>
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
     <link rel="stylesheet" href="app.min.css">
+
+    <script src="jquery-3.3.1.js" type="text/javascript"></script>
     <style>
       /* TODO */
-
-
-
+    .app-topbar{background-color:#897D55;
+	        background-image:-webkit-gradient(linear, left bottom, left top, color-stop(0.32, #063053), color-stop(0.66, #897D55;), color-stop(0.83, #5c7c99));
+                font-family:"宋体","华文行楷","隶书";
+     }
+     #drinkTypeLabel{
+                      border-left = 100px;
+		      color : red
+     } 
+     body{
+                background-color: #9E997B;
+     }
+     #costInputSection{
+     display:none;
+     } 
+     
     </style>
   </head>
 
@@ -42,34 +56,68 @@
 <div class="app-page" data-page="addRecordPage">                   <div class= "app-topbar">
          <div class="app-title">说吧 喝了啥</div>
     </div>	
-
+     
     <div class="app-content">
+
+<form>
+
+	 <div class="app-section">
+	 <label id = "drinkTypeLabel">种类</label>
          <ul class="app-list">
-             <li class="app-button">白水</li>
-             <li class="app-button">咖啡</li>
-             <li class="app-button">类茶</li>
-             <li class="app-button">奶类</li>
-             <li class="app-button">软饮料</li>	     
-    </div>
+             <li class="app-button drink-type-button" id ="bai">白水</li>
+             <li class="app-button drink-type-button">咖啡</li>
+             <li class="app-button drink-type-button">类茶</li>
+             <li class="app-button drink-type-button">奶类</li>
+             <li class="app-button drink-type-button">软饮料</li>	     
+	 </ul> 
+         </div>   
+	  
+
+         <div class="app-section"  id="costInputSection">
+             <input class="app-input" placeholder="money u cost">
+             <div class = "app-button green app-submit">fine</div>
+	 
+         </div>    
+     </div>
+  </form>
 </div>    
 
     <script src="zepto.js"></script>
-    <script src="app.min.js"></script>
+    <script src="app.min.js"></script> 
+    <script src="src/lib/swapper.js"    ></script>
+    <script src="src/lib/clickable.js"  ></script>
+    <script src="src/lib/scrollable.js" ></script>
+    <script src="src/app.js"            ></script>
+    <script src="src/utils.js"          ></script>                 <script src="src/events.js"         ></script>
+    <script src="src/metrics.js"        ></script>
+    <script src="src/dialog.js"         ></script>
+    <script src="src/form.js"           ></script>
+    <script src="src/scroll.js"         ></script>
+    <script src="src/scroll-fix.js"     ></script>                 <script src="src/pages.js"          ></script>                 <script src="src/stack.js"          ></script>
+    <script src="src/transitions.js"    ></script>
+    <script src="src/navigation.js"     ></script>
     <script>
+     
+      App.load('home', 'fade'); // fade between pages
       App.controller('home', function (page) {
         // put stuff here
+         $(page).find("body").css("background-color","#897D55");
       });
 
-      App.controller('drinkpage', function (page) {
-        // put stuff here
-      });
+      App.controller('addRecordPage', function (page) {
+           $(page).find('.drink-type-button')
+                   .clickable()
+                   .on('click',function(){
+                  //alert("please!");
+				   $(page).find("#costInputSection").css("display","block");});
+          
 
-      try {
+		      });
+             try {
         App.restore();
       } catch (err) {
         App.load('home');
       }
     </script>
-</body>
 </html>
 
